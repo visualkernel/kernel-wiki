@@ -581,7 +581,7 @@ current_thread_info()->task
 ```
 不同的CPU体系结构，获取task的方式有所有不同，有些cpu会将当前的`task_struct`保存在固定的寄存器中。
 
-注：关于`struct thread_info`结构的描述现在linux内核可能不适用了，因为有可能内核会将整个task_struct对象直接放置在栈底。
+注：关于`struct thread_info`结构的描述对于现在linux内核可能不适用了，因为有可能内核会将整个task_struct对象直接放置在栈底。说白了，`thread_info`的存在是一种优化方式，这种优化方式可能被其它更好的方式所取代。
 
 # 进程的创建
 Linux调用`fork()`通过复制当前进程来创建新的子进程，Linux为了加快创建过程，并未复制整个进程地址空间。Linux创建进程是出了名的快，主要使用了写时复制(copy on write)技术，一种推迟或免除数据复制的技术。
